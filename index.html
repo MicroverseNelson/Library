@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="favicon.png" />
+    <script
+      src="https://kit.fontawesome.com/4c536a6bd5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1>library</h1>
+        <nav>
+          <div class="logged-in" id="loggedIn">
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="main container">
+        <div class="book-list" id="book-list">
+            <!--<div class="book-card">
+                <span id="ellipsisIcon">&#8942;</span>
+                <div class="icons" id="icons">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+                <h4>title</h4>
+                <h6>author</h6>
+                <div class="pages"><h6>577</h6></div>
+              </div> -->
+              <button class="addBook-modal" id="btnmodal"><i class="fa fa-plus" aria-hidden="true"></i></button>
+              <div class="modal" id="mymodal">
+                <div class="modalContent">
+                  <span class="close">&times;</span>
+                  <h3>Add New Book</h3>
+                  <form id="form">
+                    <input type="text" id="title" placeholder="Enter Book title">
+                    <input type="text" id="author" placeholder="enter Author">
+                    <input type="number" id="pages" placeholder="Number of pages">
+                    <div class="is-read">
+                      <label for="is-read">Have you read it?</label>
+                      <input class="checkbox" type="checkbox" id="isRead">
+                    </div>
+                    <button type="submit">Submit</button>
+                  </form>
+
+                </div>
+              </div>
+        </div>
+      
+    </main>
+    <footer class="footer">
+      <p>
+        Copyright ©
+        <script>
+          document.write(new Date().getFullYear())
+        </script>
+        Nelson Ongiti
+      </p>
+      <a href="https://github.com/MicroverseNelson" target="_blank">
+        <i class="fab fa-github"></i
+      ></a>
+    </footer>
+   <script src="main.js"></script>
+  </body>
+</html>
