@@ -1,15 +1,15 @@
 /** work the modal */
-let modal = document.getElementById("mymodal");
-let btnmodal = document.getElementById("btnmodal");
-let btnclosemodal = document.getElementsByClassName("close")[0];
-let ellipsisIcon= document.getElementById("ellipsisIcon");
-let utilitiesIcons = document.getElementById("icons");
-let form = document.getElementById("form");
-let inputTitle = document.getElementById("title");
-let inputAuthor = document.getElementById("author");
-let inputPages = document.getElementById("pages");
-let InputCheckBox = document.getElementById("isRead");
-let booklistDiv = document.getElementById("book-list");
+const modal = document.getElementById("mymodal");
+const btnmodal = document.getElementById("btnmodal");
+const btnclosemodal = document.getElementsByClassName("close")[0];
+//const ellipsisIcon= document.getElementById("ellipsisIcon");
+//const utilitiesIcons = document.getElementById("icons");
+const form = document.getElementById("form");
+const inputTitle = document.getElementById("title");
+const inputAuthor = document.getElementById("author");
+const inputPages = document.getElementById("pages");
+const InputCheckBox = document.getElementById("isRead");
+
 
 
  btnmodal.onclick = () => {
@@ -35,7 +35,7 @@ let booklistDiv = document.getElementById("book-list");
    }
   };
 
-let myLibrary = JSON.parse(localStorage.getItem('bookshelf')) || [];
+const myLibrary = JSON.parse(localStorage.getItem('bookshelf')) || [];
 
 function Book(title,author,pages, read){
     this.title = inputTitle.value,
@@ -46,53 +46,53 @@ function Book(title,author,pages, read){
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    createBook();
     myBook = new Book();
     myLibrary.push(myBook);
     localStorage.setItem("bookshelf", JSON.stringify(myLibrary));
     form.reset();
 });
 
-Book.prototype.createBook = function(){
-   Book();
-    booklistDiv = document.createElement('div');
-    booklistDiv.classList.add('book-list');
-    booklistDiv.innerHTML = `<div class="book-card">
+const createBook = () => {
+  Book();
+  const booklistDiv = document.getElementById("book-list");
+    /**`<div class="book-card">
     <span id="ellipsisIcon">&#8942;</span>
     <div class="icons" id="icons">
       <i class="fa fa-pencil" aria-hidden="true"></i>
       <i class="fa fa-trash" aria-hidden="true"></i>
     </div>
-    <h4>${this.title}</h4>
-    <h6>${this.author}</h6>
-    <div class="pages"><h6>${this.pages}</h6></div>
-  </div>`;
-    //const BookCardDiv = document.createElement('div');
-    //BookCardDiv.classList.add('book-card');
-    //const ellipsisIcon = document.createElement('span');
-    //const utilicons = doucment.createElement('div');
-    //utilicons.classList.add('icons');
-    //utilicons.innerHtml = `<i class="fa fa-pencil" aria-hidden="true"></i>
-    //<i class="fa fa-trash" aria-hidden="true"></i>`;
-    //ellipsisIcon.append(utilicons);
-    //const bookTitle = document.createElement('h4');
-    //bookTitle.textContent ="${this.title}";
-    //const bookAuthor = document.createElement('h6');
-    //bookAuthor.textContent ="${this.author}";
-    //const bookPagesDiv = document.createElement('div');
-    //bookPagesDiv.classList.add('pages');
-    //bookPagesDiv.innerHtml = `<h6>${this.pages}</h6>`
+    <h4>${title}</h4>
+    <h6>${author}</h6>
+    <div class="pages"><h6>${pages}</h6></div>
+  </div>`; **/
 
-    //booklistDiv.append(ellipsisIcon,bookTitle,bookAuthor,bookPagesDiv);
+ const bookCardDiv= document.createElement('div');
+ bookCardDiv.classList.add("book-card");
+ const span = document.createElement("span");
+ span.setAttribute('id', "ellipsisIcon");
+ const iconsDiv = document.createElement("div")
+ iconsDiv.classList.add("icons");
+ iconsDiv.innerHTML = `<i class="fa fa-pencil" aria-hidden="true"></i>
+ <i class="fa fa-trash" aria-hidden="true"></i>`;
+ 
+ const titleHeader = document.createElement('h4')
+ titleHeader.innerHTML = "${this.title}";
+ const authorHeader = document.createElement('h6')
+ authorHeader.innerHTML = `${this.author}`;
+ bookCardDiv.append(titleHeader, authorHeader);
+ const pagesDiv = document.createElement('div')
+ const pagesheader = document.createElement('h6');
+ pagesheader.innerHTML = `${this.pages}`;
+ pagesDiv.append(pagesheader);
 
+ bookCardDiv.append(span, iconsDiv, titleHeader, authorHeader, pagesDiv);
+ booklistDiv.append(bookCardDiv); 
 }
+console.log(createBook());
 
-Book.prototype.displayBook = function(){
-    createBook()
-    myLibrary.forEach(element => {
-        console.log(myLibrary);
-    });
-    
-
+const displayBook = ()=> {
+    createBook();
 }
 
 Book.prototype.editBook = function(){
